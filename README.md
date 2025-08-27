@@ -48,3 +48,93 @@
 ```bash
 git clone https://github.com/ssk-2003/Smart-Dataset-Analyzer.git
 cd Smart-Dataset-Analyzer
+---
+
+### 2. Backend Setup (FastAPI)
+```bash
+cd backend
+python -m venv venv
+
+# Activate venv
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
+
+pip install -r requirements.txt
+uvicorn analyze_all:app --reload --port 8001
+Backend will be live at 👉 http://127.0.0.1:8001
+3. Frontend Setup (React)
+cd frontend
+npm install
+npm start
+
+
+Frontend will be live at 👉 http://localhost:3000
+
+📂 Project Structure
+Smart-Dataset-Analyzer/
+├── backend/
+│   ├── analyze_all.py          # FastAPI backend API
+│   ├── requirements.txt        # Python backend dependencies
+│   └── utils/                  # (optional helper scripts)
+│
+├── frontend/
+│   ├── public/                 # Public assets (favicon, index.html, screenshots)
+│   │   └── assets/             # Screenshots for README
+│   │       ├── landing.png
+│   │       ├── upload.png
+│   │       └── results.png
+│   ├── src/
+│   │   ├── components/         # Reusable React components
+│   │   ├── pages/              # Main app pages
+│   │   ├── App.js / App.css    # Root app shell
+│   │   └── index.js            # Entry point
+│   ├── package.json
+│   └── README.md               # Frontend-specific docs
+│
+├── .gitignore
+└── README.md                   # 👉 Main documentation
+
+📊 Example Workflow
+
+Upload .txt, .csv, or .docx file
+
+Backend extracts text and runs NLP pipeline
+
+Topics & sentiments are detected and summarized
+
+Frontend displays insights, charts, and top terms
+
+Export full report as PDF 📄
+
+🤝 Contributing
+
+Fork the repo
+
+Create a branch (git checkout -b feature/xyz)
+
+Commit your changes (git commit -m "Add new feature")
+
+Push to branch (git push origin feature/xyz)
+
+Open a Pull Request
+
+📜 License
+
+MIT License © 2025 Satish Kumar
+
+⭐ Support
+
+If you like this project, give it a ⭐ on GitHub
+!
+
+
+---
+
+✅ Just replace your current `README.md` with this version, commit, and push:  
+
+```bash
+git add README.md
+git commit -m "Complete README with setup and documentation"
+git push origin main
