@@ -29,7 +29,6 @@
   <img src="frontend/public/assets/results.png" alt="Analysis Results" width="300"/>
 </div>
 
-> ⚡ Place your actual screenshots in `frontend/public/assets/` with names `landing.png`, `upload.png`, `results.png`.
 
 ---
 
