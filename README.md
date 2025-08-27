@@ -24,9 +24,9 @@
 ## 🖼️ UI Preview
 
 <div align="center">
-  <img src="frontend/public/assets/landing.png" alt="Landing Page" width="300"/>
-  <img src="frontend/public/assets/upload.png" alt="Upload Page" width="300"/>
-  <img src="frontend/public/assets/results.png" alt="Analysis Results" width="300"/>
+  <img src="https://raw.githubusercontent.com/ssk-2003/Smart-Dataset-Analyzer/main/frontend/public/assets/landing.png" alt="Landing Page" width="300"/>
+  <img src="https://raw.githubusercontent.com/ssk-2003/Smart-Dataset-Analyzer/main/frontend/public/assets/upload.png" alt="Upload Page" width="300"/>
+  <img src="https://raw.githubusercontent.com/ssk-2003/Smart-Dataset-Analyzer/main/frontend/public/assets/results.png" alt="Analysis Results" width="300"/>
 </div>
 
 
