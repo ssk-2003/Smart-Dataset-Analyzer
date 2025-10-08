@@ -1,4 +1,4 @@
-🌌 Smart DataSet Analyzer – Advanced NLP Text Analysis Platform
+##🌌 Smart DataSet Analyzer – Advanced NLP Text Analysis Platform
 
 Smart DataSet Analyzer is a comprehensive web application for advanced Natural Language Processing (NLP) analysis, including sentiment analysis, topic modeling, text summarization, and professional PDF report generation. It offers both a modern frontend dashboard and a high-performance backend API for end-to-end text analytics.
 
@@ -19,7 +19,29 @@ Smart DataSet Analyzer is a comprehensive web application for advanced Natural L
 
 ---
 
-🚀 Key Features
+## 📸 Application Screenshots
+
+### 🏠 Landing Page
+<div align="center">
+  <img src="./assets/landing-page.png" alt="Landing Page" width="80%">
+  <p><i>Modern hero section with feature highlights and quick-start call-to-action</i></p>
+</div>
+
+### 📤 Upload Page
+<div align="center">
+  <img src="./assets/upload-page.png" alt="Upload Page" width="80%">
+  <p><i>Drag-and-drop file upload interface with CSV/TXT support and column selection</i></p>
+</div>
+
+### 📊 Analysis Dashboard
+<div align="center">
+  <img src="./assets/analysis-page.png" alt="Analysis Dashboard" width="80%">
+  <p><i>Interactive dashboard with sentiment analysis, topic modeling, and real-time visualizations</i></p>
+</div>
+
+---
+
+## 🚀 Key Features
 
 Sentiment Analysis – Multi-model detection with VADER and ensemble methods
 
@@ -37,7 +59,9 @@ Responsive Design – Works seamlessly on desktop and mobile
 
 Error Handling & Logging – Robust error management and detailed Loguru logs
 
-📊 Report Types
+---
+
+## 📊 Report Types
 
 Executive Summary – Business-focused overview with key insights
 
@@ -47,8 +71,11 @@ Visual Report – Chart-centric presentation with interactive visualizations
 
 Overall Report – Complete analysis combining all sections and appendices
 
-🛠 Tech Stack
-Frontend
+---
+
+## 🛠 Tech Stack
+
+### Frontend
 
 React 18 with TypeScript
 
@@ -60,7 +87,7 @@ Recharts for interactive charts
 
 shadcn/ui for polished UI components
 
-Backend
+### Backend
 
 FastAPI for high-performance REST API
 
@@ -74,7 +101,9 @@ FPDF / python-docx for professional PDF generation
 
 Loguru for logging and debugging
 
-📁 Project Structure
+---
+
+## 📁 Project Structure
 smart-dataset-analyzer/
 ├── src/                          # Frontend React application
 │   ├── components/               # React components
@@ -109,8 +138,11 @@ smart-dataset-analyzer/
  for API reference and src/README.md
  for frontend setup instructions.
 
-🚀 Getting Started
-Prerequisites
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
 
 Node.js 18+ and npm
 
@@ -118,21 +150,21 @@ Python 3.11+
 
 Git
 
-Installation
+### Installation
 
-Clone Repository
+**1. Clone Repository**
 
 git clone <repository-url>
 cd smart-dataset-analyzer
 
 
-Setup Frontend
+**2. Setup Frontend**
 
 cd src
 npm install
 
 
-Setup Backend
+**3. Setup Backend**
 
 cd backend
 
@@ -148,9 +180,9 @@ source smart-env/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-Running the Application
+### Running the Application
 
-Start Backend Server
+**1. Start Backend Server**
 
 cd backend
 uvicorn main:app --reload --host 127.0.0.1 --port 8001
@@ -158,7 +190,7 @@ uvicorn main:app --reload --host 127.0.0.1 --port 8001
 
 Runs at: http://localhost:8001
 
-Start Frontend Development Server
+**2. Start Frontend Development Server**
 
 cd src
 npm run dev
@@ -166,7 +198,9 @@ npm run dev
 
 Runs at: http://localhost:5173
 
-📖 Usage
+---
+
+## 📖 Usage
 
 Upload Data – CSV/TXT files with text content
 
@@ -178,7 +212,9 @@ Generate Reports – Export professional PDFs
 
 Export Data – Save results and charts
 
-🔧 API Endpoints
+---
+
+## 🔧 API Endpoints
 
 POST /upload – Upload files for analysis
 
@@ -204,7 +240,9 @@ Summarization – Extractive summarization
 
 Report Generation – Professional PDFs with charts and tables
 
-🎨 Visualization & Design
+---
+
+## 🎨 Visualization & Design
 
 Real-time Processing – Live updates during analysis
 
@@ -214,7 +252,9 @@ Responsive UI – Desktop, tablet, and mobile-friendly
 
 Professional Reports – Export-ready PDF documents
 
-🤝 Contributing
+---
+
+## 🤝 Contributing
 
 Fork the repository
 
@@ -226,11 +266,15 @@ Push branch: git push origin feature/my-feature
 
 Open a Pull Request
 
-📄 License
+---
+
+## 📄 License
 
 MIT License – see LICENSE file for details
 
-🙏 Acknowledgments
+---
+
+## 🙏 Acknowledgments
 
 Built using modern web technologies and advanced NLP libraries
 

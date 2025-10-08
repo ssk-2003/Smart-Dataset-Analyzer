@@ -1,4 +1,4 @@
-💻 Smart NLP Analytics Dashboard – Frontend
+# 💻 Smart NLP Analytics Dashboard – Frontend
 
 The Smart NLP Analytics Dashboard frontend is built with React 18, TypeScript, and Vite, delivering a modern, responsive interface for text analysis with interactive visualizations and PDF reporting.
 
@@ -11,7 +11,29 @@ The Smart NLP Analytics Dashboard frontend is built with React 18, TypeScript, a
 
 ---
 
-🚀 Features
+## 📸 Application Screenshots
+
+### 🏠 Landing Page
+<div align="center">
+  <img src="../assets/landing-page.png" alt="Landing Page" width="80%">
+  <p><i>Modern hero section with gradients and feature highlights</i></p>
+</div>
+
+### 📤 Upload Page
+<div align="center">
+  <img src="../assets/upload-page.png" alt="Upload Page" width="80%">
+  <p><i>Drag-and-drop file upload with validation and preview</i></p>
+</div>
+
+### 📊 Analysis Dashboard
+<div align="center">
+  <img src="../assets/analysis-page.png" alt="Analysis Dashboard" width="80%">
+  <p><i>Real-time analysis with interactive charts and visualizations</i></p>
+</div>
+
+---
+
+## 🚀 Features
 
 Modern UI/UX – Clean, professional design with Tailwind CSS
 
@@ -33,7 +55,11 @@ File Upload – Drag-and-drop CSV/TXT support
 
 Dark Theme – Beautiful gradients and color schemes
 
-📂 Project Structure
+---
+
+## 📂 Project Structure
+
+```
 src/
 ├── components/                 # React UI components
 │   ├── AnalysisPage.tsx        # Main analysis dashboard
@@ -56,9 +82,13 @@ src/
 │   └── Index.tsx
 ├── App.tsx                     # Root component
 └── main.tsx                    # App bootstrap
+```
 
-🎨 Tech Stack
-Core
+---
+
+## 🎨 Tech Stack
+
+### Core
 
 React 18 → Modern UI library
 
@@ -66,7 +96,7 @@ TypeScript 5.8 → Type-safe development
 
 Vite 5.4 → Lightning-fast build tool
 
-Styling & UI
+### Styling & UI
 
 Tailwind CSS → Utility-first CSS framework
 
@@ -78,13 +108,13 @@ Lucide React → Icon library
 
 Framer Motion → Smooth animations
 
-Data Visualization
+### Data Visualization
 
 Recharts → Responsive chart library
 
 Custom visualizations → Sentiment, topics, ROC curves
 
-State & Forms
+### State & Forms
 
 React Context API → Global state
 
@@ -92,33 +122,49 @@ React Hook Form → Form handling
 
 Zod → Schema validation
 
-Routing
+### Routing
 
 React Router DOM → Client-side routing
 
-🛠 Setup & Installation
-Prerequisites
+---
+
+## 🛠 Setup & Installation
+
+### Prerequisites
 
 Node.js 18+ and npm
 
 Git
 
-Install Dependencies
-npm install
+### Install Dependencies
 
-Start Development Server
+```bash
+npm install
+```
+
+### Start Development Server
+
+```bash
 npm run dev
+```
 
 
 Runs at → http://localhost:5173
 
-Build for Production
+### Build for Production
+
+```bash
 npm run build
+```
 
 
 Output → dist/ folder ready for deployment
 
-📦 Key Dependencies
+---
+
+## 📦 Key Dependencies
+
+```json
 {
   "dependencies": {
     "react": "^18.3.1",
@@ -140,9 +186,13 @@ Output → dist/ folder ready for deployment
     "@vitejs/plugin-react-swc": "^3.11.0"
   }
 }
+```
 
-🎯 Key Features
-Landing Page
+---
+
+## 🎯 Key Features
+
+### Landing Page
 
 Hero section with gradients
 
@@ -152,7 +202,7 @@ Quick-start call-to-action
 
 Fully responsive
 
-Upload Page
+### Upload Page
 
 Drag-and-drop file upload
 
@@ -162,7 +212,7 @@ File validation & preview
 
 Column selection for text analysis
 
-Analysis Dashboard
+### Analysis Dashboard
 
 Preprocessing Section: Data cleaning stats, vectorization, algorithm selection
 
@@ -174,13 +224,16 @@ Visualization Section: ROC curves, confusion matrices, classification metrics
 
 Export Report: One-click PDF download with professional formatting
 
-🎨 Color Scheme
-Sentiment Charts
+---
+
+## 🎨 Color Scheme
+
+### Sentiment Charts
 Positive: #00D4AA
 Neutral:  #FFB800
 Negative: #FF6B6B
 
-Chart Backgrounds
+### Chart Backgrounds
 Sentiment: slate-900 → purple-900
 Topic Modeling: emerald-600 → cyan-700
 ROC Curve: indigo-600 → pink-700
@@ -189,7 +242,9 @@ Confusion Matrix: orange-600 → pink-700
 
 Gradients, hover effects, shadow styling included
 
-🔗 API Integration
+---
+
+## 🔗 API Integration
 
 Connects to backend at http://localhost:8001:
 
@@ -214,9 +269,15 @@ const analyzeFile = async (filename: string, textColumn: string) => {
   
   return response.json();
 };
+```
 
-📊 Component Highlights
-Interactive Charts (Recharts)
+---
+
+## 📊 Component Highlights
+
+### Interactive Charts (Recharts)
+
+```tsx
 <PieChart>
   <Pie data={sentimentData} innerRadius={30} outerRadius={90} dataKey="value">
     <Cell fill="url(#positiveGradient)" />
@@ -224,29 +285,44 @@ Interactive Charts (Recharts)
     <Cell fill="url(#negativeGradient)" />
   </Pie>
 </PieChart>
+```
 
-shadcn/ui Components
+### shadcn/ui Components
+
+```tsx
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
+```
 
-🚀 Available Scripts
+---
+
+## 🚀 Available Scripts
+
+```bash
 npm run dev      # Start development server
 npm run build    # Build for production
 npm run preview  # Preview production build
 npm run lint     # Run ESLint
+```
 
-🎯 State Management
-AnalysisContext.tsx
+---
+
+## 🎯 State Management
+
+### AnalysisContext.tsx
 
 Holds global state: analysis results, file upload status, current step, error handling, PDF generation
 
 import { useAnalysis } from '@/contexts/AnalysisContext';
 
 const { analysisResults, uploadFile, analyzeFile, downloadReport } = useAnalysis();
+```
 
-📱 Responsive Design
+---
+
+## 📱 Responsive Design
 
 Mobile-first approach, touch-friendly layout
 
@@ -262,7 +338,9 @@ lg: 1024px
 xl: 1280px
 2xl: 1536px
 
-🔍 Best Practices
+---
+
+## 🔍 Best Practices
 
 Modular & reusable components
 
@@ -274,7 +352,9 @@ Accessibility (ARIA labels, keyboard navigation)
 
 Graceful error handling & loading states
 
-🌐 Deployment
+---
+
+## 🌐 Deployment
 
 Build for production:
 
@@ -285,9 +365,13 @@ Deploy static files (dist/) to Vercel, Netlify, or GitHub Pages
 
 .env setup:
 
+```bash
 VITE_API_URL=http://localhost:8001
+```
 
-🤝 Backend Integration
+---
+
+## 🤝 Backend Integration
 
 Real-time updates from FastAPI backend
 

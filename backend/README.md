@@ -1,4 +1,4 @@
-🖥 Smart NLP Text Analytics Engine – Backend
+# 🖥 Smart NLP Text Analytics Engine – Backend
 
 The backend of Smart NLP Text Analytics Engine is powered by FastAPI, providing advanced NLP and ML-driven text analysis with professional PDF reporting capabilities.
 
@@ -32,7 +32,11 @@ Real-time Analysis – Async processing with live status updates
 
 Comprehensive Logging – Detailed logs using Loguru
 
-📂 Project Structure
+---
+
+## 📂 Project Structure
+
+```
 backend/
 ├── main.py                  # FastAPI application & API endpoints
 ├── utils.py                 # Helper functions
@@ -49,25 +53,38 @@ backend/
 ├── outputs/                 # Generated charts & PDFs
 ├── models/                  # Trained ML models
 └── logs/                    # Application logs
+```
 
-🌐 API Endpoints
-Core Endpoints
-Method	Endpoint	Description
-GET	/	Root endpoint – backend status
-GET	/health	Health check with timestamp
-GET	/status	AI pipeline initialization status
-Upload & Analysis
-Method	Endpoint	Description
-POST	/upload	Upload CSV/TXT files
-POST	/analyze	Run complete NLP pipeline
-POST	/analyze/step	Run single step (debugging)
-Results & Reports
-Method	Endpoint	Description
-GET	/results	List all analysis results
-GET	/results/{filename}	Retrieve JSON results
-POST	/generate-pdf/{filename}	Generate PDF report
-GET	/download/report/{type}/{filename}	Download PDF
-Report Types
+---
+
+## 🌐 API Endpoints
+
+### Core Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/` | Root endpoint – backend status |
+| GET | `/health` | Health check with timestamp |
+| GET | `/status` | AI pipeline initialization status |
+
+### Upload & Analysis
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/upload` | Upload CSV/TXT files |
+| POST | `/analyze` | Run complete NLP pipeline |
+| POST | `/analyze/step` | Run single step (debugging) |
+
+### Results & Reports
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/results` | List all analysis results |
+| GET | `/results/{filename}` | Retrieve JSON results |
+| POST | `/generate-pdf/{filename}` | Generate PDF report |
+| GET | `/download/report/{type}/{filename}` | Download PDF |
+
+### Report Types
 
 executive_summary → Business overview with key insights
 
@@ -77,29 +94,45 @@ visual_report → Charts and visual representation
 
 overall_report → Complete combined analysis
 
-🛠 Setup & Installation
-Prerequisites
+---
+
+## 🛠 Setup & Installation
+
+### Prerequisites
 
 Python 3.8+
 
 pip package manager
 
-Install Dependencies
+### Install Dependencies
+
+```bash
 cd backend
 pip install -r requirements.txt
+```
 
-Download SpaCy Model
+### Download SpaCy Model
+
+```bash
 python -m spacy download en_core_web_sm
+```
 
-Start the Server
+### Start the Server
+
+```bash
 uvicorn main:app --reload --host 127.0.0.1 --port 8001
+```
 
 
 Server URL: http://localhost:8001
 
 API Docs: http://localhost:8001/docs (Swagger UI)
 
-📦 Key Dependencies
+---
+
+## 📦 Key Dependencies
+
+```
 # FastAPI
 fastapi==0.104.1
 uvicorn[standard]==0.24.0
@@ -126,8 +159,11 @@ PyPDF2==3.0.1
 
 # Logging
 loguru==0.7.2
+```
 
-🔬 Analysis Pipeline
+---
+
+## 🔬 Analysis Pipeline
 
 Data Preprocessing
 
@@ -175,19 +211,33 @@ Professional PDFs with charts & tables
 
 Four distinct report types with custom color schemes
 
-📊 Example Usage
-Upload File
-curl -X POST "http://localhost:8001/upload" -F "file=@dataset.csv"
+---
 
-Run Analysis
+## 📊 Example Usage
+
+### Upload File
+
+```bash
+curl -X POST "http://localhost:8001/upload" -F "file=@dataset.csv"
+```
+
+### Run Analysis
+
+```bash
 curl -X POST "http://localhost:8001/analyze" \
   -H "Content-Type: application/json" \
   -d '{"filename": "dataset.csv", "text_column": "text"}'
+```
 
-Download Report
+### Download Report
+
+```bash
 curl -O "http://localhost:8001/download/report/overall_report/dataset.csv"
+```
 
-🎨 PDF Report Styling
+---
+
+## 🎨 PDF Report Styling
 
 Header Background: Dark Navy #0B1220
 
@@ -201,7 +251,9 @@ Subsection Headers: Green #00B894
 
 Body Text: Dark Gray #222222
 
-🔍 Logging
+---
+
+## 🔍 Logging
 
 Timestamped entries
 
@@ -211,15 +263,24 @@ Detailed error tracing
 
 Logs stored in logs/
 
-🚀 Production Deployment
-uvicorn main:app --host 0.0.0.0 --port 8001 --workers 4
+---
 
+## 🚀 Production Deployment
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8001 --workers 4
+```
 
 Or using Gunicorn:
 
-gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8001
+```bash
 
-🤝 Frontend Integration
+gunicorn main:app -w 4 -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:8001
+```
+
+---
+
+## 🤝 Frontend Integration
 
 CORS enabled for local dev
 
@@ -231,7 +292,9 @@ Async processing & status updates
 
 Automatic caching of results
 
-📝 Notes
+---
+
+## 📝 Notes
 
 Uploads: uploads/
 

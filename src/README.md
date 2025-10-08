@@ -1,6 +1,6 @@
 # 💻 Smart NLP Analytics Dashboard – Frontend
 
-The Smart NLP Analytics Dashboard frontend is built with **React 18**, **TypeScript**, and **Vite**, delivering a modern, responsive interface for text analysis with interactive visualizations and PDF reporting.
+The Smart NLP Analytics Dashboard frontend is built with React 18, TypeScript, and Vite, delivering a modern, responsive interface for text analysis with interactive visualizations and PDF reporting.
 
 ![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)
@@ -11,19 +11,49 @@ The Smart NLP Analytics Dashboard frontend is built with **React 18**, **TypeScr
 
 ---
 
+## 📸 Application Screenshots
+
+### 🏠 Landing Page
+<div align="center">
+  <img src="../assets/landing-page.png" alt="Landing Page" width="80%">
+  <p><i>Modern hero section with gradients and feature highlights</i></p>
+</div>
+
+### 📤 Upload Page
+<div align="center">
+  <img src="../assets/upload-page.png" alt="Upload Page" width="80%">
+  <p><i>Drag-and-drop file upload with validation and preview</i></p>
+</div>
+
+### 📊 Analysis Dashboard
+<div align="center">
+  <img src="../assets/analysis-page.png" alt="Analysis Dashboard" width="80%">
+  <p><i>Real-time analysis with interactive charts and visualizations</i></p>
+</div>
+
+---
+
 ## 🚀 Features
 
-{{ ... }}
-✅ **Modern UI/UX** → Clean, professional design with Tailwind CSS  
-✅ **Real-time Analysis** → Live updates during NLP processing  
-✅ **Interactive Charts** → Dynamic visualizations using Recharts  
-✅ **PDF Export** → One-click comprehensive report download  
-✅ **Responsive Design** → Works seamlessly on desktop and mobile  
-✅ **Component Library** → shadcn/ui for polished UI components  
-✅ **Type Safety** → Full TypeScript implementation  
-✅ **State Management** → React Context API for global state  
-✅ **File Upload** → Drag-and-drop CSV/TXT file support  
-✅ **Dark Theme** → Beautiful color schemes with gradients  
+Modern UI/UX – Clean, professional design with Tailwind CSS
+
+Real-time Analysis – Live updates during NLP processing
+
+Interactive Charts – Dynamic visualizations with Recharts
+
+PDF Export – One-click comprehensive report download
+
+Responsive Design – Desktop and mobile-friendly
+
+Component Library – shadcn/ui for polished UI components
+
+Type Safety – Full TypeScript implementation
+
+State Management – React Context API for global state
+
+File Upload – Drag-and-drop CSV/TXT support
+
+Dark Theme – Beautiful gradients and color schemes
 
 ---
 
@@ -31,86 +61,104 @@ The Smart NLP Analytics Dashboard frontend is built with **React 18**, **TypeScr
 
 ```
 src/
-├── components/                 # React components
+├── components/                 # React UI components
 │   ├── AnalysisPage.tsx        # Main analysis dashboard
 │   ├── HeroPage.tsx            # Landing page
 │   ├── UploadPage.tsx          # File upload interface
-│   └── ui/                     # shadcn/ui component library
+│   └── ui/                     # shadcn/ui components
 │       ├── button.tsx
 │       ├── card.tsx
 │       ├── dialog.tsx
 │       ├── progress.tsx
 │       ├── tabs.tsx
 │       └── ... (40+ components)
-├── contexts/                   # State management
-│   └── AnalysisContext.tsx     # Global analysis state
+├── contexts/                   # Global state management
+│   └── AnalysisContext.tsx
 ├── hooks/                      # Custom React hooks
-│   └── use-toast.ts            # Toast notifications
+│   └── use-toast.ts
 ├── lib/                        # Utilities
-│   └── utils.ts                # Helper functions
+│   └── utils.ts
 ├── pages/                      # Page components
-│   └── Index.tsx               # Main app entry
+│   └── Index.tsx
 ├── App.tsx                     # Root component
-└── main.tsx                    # Application bootstrap
+└── main.tsx                    # App bootstrap
 ```
 
 ---
 
 ## 🎨 Tech Stack
 
-### **Core Framework**
-- **React 18.3** → Modern UI library
-- **TypeScript 5.8** → Type-safe development
-- **Vite 5.4** → Lightning-fast build tool
+### Core
 
-### **Styling & UI**
-- **Tailwind CSS** → Utility-first CSS framework
-- **shadcn/ui** → High-quality component library
-- **Radix UI** → Accessible primitives
-- **Lucide React** → Beautiful icon library
-- **Framer Motion** → Smooth animations
+React 18 → Modern UI library
 
-### **Data Visualization**
-- **Recharts** → Responsive chart library
-- **Custom Charts** → Sentiment, topic modeling, ROC curves
+TypeScript 5.8 → Type-safe development
 
-### **State & Forms**
-- **React Context API** → Global state management
-- **React Hook Form** → Form handling
-- **Zod** → Schema validation
+Vite 5.4 → Lightning-fast build tool
 
-### **Routing & Navigation**
-- **React Router DOM** → Client-side routing
+### Styling & UI
+
+Tailwind CSS → Utility-first CSS framework
+
+shadcn/ui → High-quality component library
+
+Radix UI → Accessible primitives
+
+Lucide React → Icon library
+
+Framer Motion → Smooth animations
+
+### Data Visualization
+
+Recharts → Responsive chart library
+
+Custom visualizations → Sentiment, topics, ROC curves
+
+### State & Forms
+
+React Context API → Global state
+
+React Hook Form → Form handling
+
+Zod → Schema validation
+
+### Routing
+
+React Router DOM → Client-side routing
 
 ---
 
 ## 🛠 Setup & Installation
 
-### **Prerequisites**
-- Node.js 18+ and npm
-- Git
+### Prerequisites
 
-### **1. Install Dependencies**
+Node.js 18+ and npm
+
+Git
+
+### Install Dependencies
 
 ```bash
 npm install
 ```
 
-### **2. Start Development Server**
+### Start Development Server
 
 ```bash
 npm run dev
 ```
 
-**Frontend runs at** → `http://localhost:5173`
 
-### **3. Build for Production**
+Runs at → http://localhost:5173
+
+### Build for Production
 
 ```bash
 npm run build
 ```
 
-**Output** → `dist/` folder ready for deployment
+
+Output → dist/ folder ready for deployment
 
 ---
 
@@ -144,80 +192,62 @@ npm run build
 
 ## 🎯 Key Features
 
-### **1. Landing Page (HeroPage.tsx)**
-- Modern hero section with gradients
-- Feature highlights
-- Quick start CTA buttons
-- Responsive design
+### Landing Page
 
-### **2. Upload Page (UploadPage.tsx)**
-- Drag-and-drop file upload
-- CSV/TXT file support
-- File validation
-- Column selection for text data
-- Preview uploaded data
+Hero section with gradients
 
-### **3. Analysis Dashboard (AnalysisPage.tsx)**
-- **Preprocessing Section**
-  - Data cleaning statistics
-  - Vectorization methods (TF-IDF, BoW)
-  - Algorithm selection display
+Feature highlights
 
-- **Topic Modeling Section**
-  - LDA vs NMF comparison
-  - Coherence scores
-  - Top words per topic
-  - Visual topic distribution
+Quick-start call-to-action
 
-- **Sentiment Analysis Section**
-  - Donut chart with gradients
-  - Positive/Neutral/Negative breakdown
-  - Descriptive labels (Optimistic/Balanced/Critical)
-  - Distribution statistics
+Fully responsive
 
-- **Visualization Section**
-  - ROC curves with vibrant gradients
-  - Confusion matrices
-  - Classification metrics cards
-  - Performance statistics
+### Upload Page
 
-- **Export Report**
-  - One-click PDF download
-  - Comprehensive report generation
-  - Professional formatting
+Drag-and-drop file upload
+
+CSV/TXT support
+
+File validation & preview
+
+Column selection for text analysis
+
+### Analysis Dashboard
+
+Preprocessing Section: Data cleaning stats, vectorization, algorithm selection
+
+Topic Modeling: LDA vs NMF comparison, top words per topic, visual distribution
+
+Sentiment Analysis: Donut charts with positive/neutral/negative breakdown
+
+Visualization Section: ROC curves, confusion matrices, classification metrics
+
+Export Report: One-click PDF download with professional formatting
 
 ---
 
 ## 🎨 Color Scheme
 
-### **Sentiment Chart Colors**
-```css
-Positive: Bright teal/cyan (#00D4AA)
-Neutral: Bright amber/gold (#FFB800)
-Negative: Coral red (#FF6B6B)
-```
+### Sentiment Charts
+Positive: #00D4AA
+Neutral:  #FFB800
+Negative: #FF6B6B
 
-### **Chart Backgrounds**
-```css
-Sentiment: Dark slate with purple (slate-900 → purple-900)
-Topic Modeling: Emerald to cyan (emerald-600 → cyan-700)
-ROC Curve: Indigo to pink (indigo-600 → pink-700)
-Confusion Matrix: Orange to pink (orange-600 → pink-700)
-```
+### Chart Backgrounds
+Sentiment: slate-900 → purple-900
+Topic Modeling: emerald-600 → cyan-700
+ROC Curve: indigo-600 → pink-700
+Confusion Matrix: orange-600 → pink-700
 
-### **Gradients**
-- Smooth transitions with `via-` colors
-- Hover effects with scale transforms
-- Shadow effects matching themes
+
+Gradients, hover effects, shadow styling included
 
 ---
 
 ## 🔗 API Integration
 
-The frontend connects to the backend at `http://localhost:8001`:
+Connects to backend at http://localhost:8001:
 
-```typescript
-// Example API calls from AnalysisContext.tsx
 const uploadFile = async (file: File) => {
   const formData = new FormData();
   formData.append('file', file);
@@ -245,16 +275,11 @@ const analyzeFile = async (filename: string, textColumn: string) => {
 
 ## 📊 Component Highlights
 
-### **Interactive Charts (Recharts)**
+### Interactive Charts (Recharts)
+
 ```tsx
-// Donut chart for sentiment
 <PieChart>
-  <Pie
-    data={sentimentData}
-    innerRadius={30}
-    outerRadius={90}
-    dataKey="value"
-  >
+  <Pie data={sentimentData} innerRadius={30} outerRadius={90} dataKey="value">
     <Cell fill="url(#positiveGradient)" />
     <Cell fill="url(#neutralGradient)" />
     <Cell fill="url(#negativeGradient)" />
@@ -262,7 +287,8 @@ const analyzeFile = async (filename: string, textColumn: string) => {
 </PieChart>
 ```
 
-### **shadcn/ui Components**
+### shadcn/ui Components
+
 ```tsx
 import { Button } from "@/components/ui/button"
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"
@@ -275,25 +301,20 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 ## 🚀 Available Scripts
 
 ```bash
-npm run dev          # Start development server (Vite)
-npm run build        # Build for production
-npm run preview      # Preview production build
-npm run lint         # Run ESLint
+npm run dev      # Start development server
+npm run build    # Build for production
+npm run preview  # Preview production build
+npm run lint     # Run ESLint
 ```
 
 ---
 
 ## 🎯 State Management
 
-### **AnalysisContext.tsx**
-Provides global state for:
-- Analysis results
-- File upload status
-- Current analysis step
-- Error handling
-- PDF report generation
+### AnalysisContext.tsx
 
-```tsx
+Holds global state: analysis results, file upload status, current step, error handling, PDF generation
+
 import { useAnalysis } from '@/contexts/AnalysisContext';
 
 const { analysisResults, uploadFile, analyzeFile, downloadReport } = useAnalysis();
@@ -303,64 +324,61 @@ const { analysisResults, uploadFile, analyzeFile, downloadReport } = useAnalysis
 
 ## 📱 Responsive Design
 
-The interface adapts to all screen sizes:
-- **Mobile**: Stack layout, touch-friendly
-- **Tablet**: Optimized grid layouts
-- **Desktop**: Full dashboard experience
+Mobile-first approach, touch-friendly layout
 
-Tailwind breakpoints:
-```css
-sm: 640px   /* Small devices */
-md: 768px   /* Medium devices */
-lg: 1024px  /* Large devices */
-xl: 1280px  /* Extra large devices */
-2xl: 1536px /* 2X Extra large devices */
-```
+Tablet optimized grids
+
+Full dashboard experience on desktop
+
+Tailwind Breakpoints
+
+sm: 640px
+md: 768px
+lg: 1024px
+xl: 1280px
+2xl: 1536px
 
 ---
 
 ## 🔍 Best Practices
 
-✅ **Component Organization** → Modular, reusable components  
-✅ **Type Safety** → Full TypeScript coverage  
-✅ **Performance** → Code splitting, lazy loading  
-✅ **Accessibility** → ARIA labels, keyboard navigation  
-✅ **Error Handling** → Graceful error states  
-✅ **Loading States** → Progress indicators  
-✅ **Responsive** → Mobile-first approach  
+Modular & reusable components
+
+Full TypeScript coverage
+
+Code splitting & lazy loading
+
+Accessibility (ARIA labels, keyboard navigation)
+
+Graceful error handling & loading states
 
 ---
 
 ## 🌐 Deployment
 
-### **Build for Production**
-```bash
+Build for production:
+
 npm run build
-```
 
-### **Deploy to Vercel/Netlify**
-The `dist/` folder is ready for static hosting:
-- Vercel: `vercel deploy`
-- Netlify: `netlify deploy --prod`
-- GitHub Pages: Push `dist/` to `gh-pages` branch
 
-### **Environment Variables**
-Create `.env` file:
+Deploy static files (dist/) to Vercel, Netlify, or GitHub Pages
+
+.env setup:
+
 ```bash
 VITE_API_URL=http://localhost:8001
 ```
 
 ---
 
-## 🤝 Integration with Backend
+## 🤝 Backend Integration
 
-The frontend seamlessly works with the FastAPI backend:
-- Real-time analysis updates
-- File upload with progress tracking
-- PDF report download
-- Error handling with user-friendly messages
-- Toast notifications for user feedback
+Real-time updates from FastAPI backend
 
----
+File upload with progress tracking
 
-**Built with React, TypeScript, Tailwind CSS, and modern web technologies** 🚀
+PDF report download
+
+Error handling & toast notifications
+
+Built with React, TypeScript, Tailwind CSS, and modern web technologies 🚀
