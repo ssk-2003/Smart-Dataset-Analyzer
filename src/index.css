@@ -1,5 +1,9 @@
+/* CSS Language Server: Tailwind CSS directives are valid */
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind base;
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind components;
+/* stylelint-disable-next-line at-rule-no-unknown */
 @tailwind utilities;
 
 /* Premium Glass Design System - Sleek & Modern
@@ -77,10 +81,12 @@ All colors MUST be HSL.
 
 @layer base {
   * {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply border-border;
   }
 
   body {
+    /* stylelint-disable-next-line at-rule-no-unknown */
     @apply bg-background text-foreground relative overflow-x-hidden;
   }
 
@@ -293,5 +299,33 @@ All colors MUST be HSL.
 
   .cursor-scale:hover {
     transform: scale(1.05);
+  }
+
+  /* Background Gradient Classes */
+  .bg-gradient-cosmic {
+    background: var(--gradient-cosmic);
+  }
+
+  .glass-nature {
+    /* stylelint-disable-next-line at-rule-no-unknown */
+    @apply glass-card;
+  }
+
+  .nature-particles {
+    /* stylelint-disable-next-line at-rule-no-unknown */
+    @apply glass-particles;
+  }
+
+  /* Remove white border from Recharts bars */
+  .no-bar-stroke .recharts-bar-rectangle {
+    stroke: none !important;
+    stroke-width: 0 !important;
+    outline: none !important;
+  }
+
+  .no-bar-stroke .recharts-bar-rectangle:hover {
+    stroke: none !important;
+    stroke-width: 0 !important;
+    outline: none !important;
   }
 }

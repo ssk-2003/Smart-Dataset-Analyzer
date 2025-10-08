@@ -6,33 +6,57 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import HeroPage from "./components/HeroPage";
 import UploadPage from "./components/UploadPage";
-import AnalysisPage from "./components/AnalysisPage";
+import AnalysisPage from '@/components/AnalysisPage';
+import { AnalysisProvider } from "./contexts/AnalysisContext";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
-type AppState = 'hero' | 'upload' | 'analysis';
-
 const App = () => {
-  const [currentPage, setCurrentPage] = useState<AppState>('hero');
+  const [currentPage, setCurrentPage] = useState<'hero' | 'upload' | 'analysis'>('hero'); // Default to hero page
   const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [serverFilename, setServerFilename] = useState<string>('');
 
   const handleGetStarted = () => {
     setCurrentPage('upload');
   };
 
-  const handleUploadComplete = (file: File) => {
-    setUploadedFile(file);
-    setCurrentPage('analysis');
+  const handleBack = () => {
+    setCurrentPage('upload');
   };
 
   const handleBackToHero = () => {
     setCurrentPage('hero');
-    setUploadedFile(null);
   };
 
-  const handleBackToUpload = () => {
-    setCurrentPage('upload');
+  const handleUploadComplete = (file: File, filename: string) => {
+    setUploadedFile(file);
+    setServerFilename(filename);
+    setCurrentPage('analysis');
+  };
+
+  const renderCurrentPage = () => {
+    switch (currentPage) {
+      case 'analysis':
+        return (
+          <AnalysisProvider>
+            <AnalysisPage
+              onBack={handleBack}
+              uploadedFile={uploadedFile}
+              serverFilename={serverFilename}
+            />
+          </AnalysisProvider>
+        );
+      case 'upload':
+        return (
+          <UploadPage
+            onBack={handleBackToHero}
+            onUploadComplete={handleUploadComplete}
+          />
+        );
+      default:
+        return <HeroPage onGetStarted={handleGetStarted} />;
+    }
   };
 
   return (
@@ -42,26 +66,7 @@ const App = () => {
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={
-              <>
-                {currentPage === 'hero' && (
-                  <HeroPage onGetStarted={handleGetStarted} />
-                )}
-                {currentPage === 'upload' && (
-                  <UploadPage 
-                    onBack={handleBackToHero} 
-                    onUploadComplete={handleUploadComplete} 
-                  />
-                )}
-                {currentPage === 'analysis' && (
-                  <AnalysisPage 
-                    onBack={handleBackToUpload} 
-                    uploadedFile={uploadedFile} 
-                  />
-                )}
-              </>
-            } />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="/" element={renderCurrentPage()} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>

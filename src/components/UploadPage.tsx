@@ -1,14 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
-import { Upload, File, CheckCircle, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Upload, File, CheckCircle, AlertCircle, ArrowLeft, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { uploadFile as apiUploadFile, checkApiHealth, getAvailableResults } from '@/lib/api';
 
 interface UploadPageProps {
   onBack: () => void;
-  onUploadComplete: (file: File) => void;
+  onUploadComplete: (file: File | null, filename?: string) => void;
 }
 
 interface FileValidation {
@@ -22,10 +23,39 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
   const [uploadProgress, setUploadProgress] = useState(0);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadComplete, setUploadComplete] = useState(false);
+  const [uploadError, setUploadError] = useState<string | null>(null);
+  const [backendStatus, setBackendStatus] = useState<'checking' | 'connected' | 'error'>('checking');
   const { toast } = useToast();
 
   const ACCEPTED_TYPES = ['.csv', '.doc', '.docx', '.pdf', '.txt'];
   const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
+
+  // Check backend connection on mount
+  useEffect(() => {
+    const checkBackend = async () => {
+      try {
+        const response = await checkApiHealth();
+        if (response.status === 'success') {
+          setBackendStatus('connected');
+          toast({
+            title: "Backend Connected",
+            description: "Ready to upload and analyze files",
+          });
+        } else {
+          setBackendStatus('error');
+          toast({
+            title: "Backend Not Available",
+            description: "Please ensure the backend is running on port 8001",
+            variant: "destructive"
+          });
+        }
+      } catch (error) {
+        setBackendStatus('error');
+      }
+    };
+
+    checkBackend();
+  }, [toast]);
 
   const validateFile = (file: File): FileValidation => {
     const extension = '.' + file.name.split('.').pop()?.toLowerCase();
@@ -68,9 +98,11 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
     }
 
     setSelectedFile(file);
+    setUploadError(null);
+    setUploadComplete(false);
     toast({
       title: "File Selected",
-      description: `${file.name} is ready for analysis`
+      description: `${file.name} is ready for upload`
     });
   };
 
@@ -100,30 +132,62 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
     }
   };
 
-  const simulateUpload = async () => {
-    if (!selectedFile) return;
-
-    setIsUploading(true);
-    setUploadProgress(0);
-
-    // Simulate upload progress
-    for (let i = 0; i <= 100; i += 2) {
-      await new Promise(resolve => setTimeout(resolve, 50));
-      setUploadProgress(i);
+  const uploadFile = async () => {
+    if (!selectedFile || backendStatus !== 'connected') {
+      if (backendStatus !== 'connected') {
+        toast({
+          title: "Backend Not Connected",
+          description: "Please start the backend server first",
+          variant: "destructive"
+        });
+      }
+      return;
     }
-
-    setIsUploading(false);
-    setUploadComplete(true);
     
-    toast({
-      title: "Upload Complete!",
-      description: "Your file has been successfully analyzed"
-    });
-
-    // Transition to analysis page after a short delay
-    setTimeout(() => {
-      onUploadComplete(selectedFile);
-    }, 1500);
+    setIsUploading(true);
+    setUploadError(null);
+    setUploadProgress(0);
+    
+    try {
+      // Upload file with progress tracking
+      const response = await apiUploadFile(selectedFile, (progress) => {
+        setUploadProgress(progress);
+      });
+      
+      if (response.status === 'error' || !response.data) {
+        throw new Error(response.error || 'Upload failed');
+      }
+      
+      setUploadProgress(100);
+      setIsUploading(false);
+      setUploadComplete(true);
+      
+      // Store the uploaded filename for analysis
+      const uploadedFilename = response.data.filename;
+      localStorage.setItem('uploadedFile', uploadedFilename);
+      
+      toast({
+        title: "Upload Successful ✅",
+        description: `${selectedFile.name} has been uploaded and is ready for analysis.`,
+      });
+      
+      // Transition to analysis page after a short delay
+      setTimeout(() => {
+        onUploadComplete(selectedFile, uploadedFilename);
+      }, 1500);
+    } catch (error) {
+      setIsUploading(false);
+      setUploadProgress(0);
+      
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      setUploadError(errorMessage);
+      
+      toast({
+        title: "Upload Failed",
+        description: errorMessage,
+        variant: "destructive"
+      });
+    }
   };
 
   return (
@@ -154,7 +218,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
       <div className="relative z-10 container mx-auto px-4 py-8">
         {/* Header */}
         <motion.div 
-          className="flex items-center gap-4 mb-12"
+          className="flex items-center justify-between mb-12"
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5 }}
@@ -163,6 +227,17 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Button>
+          
+          <div className="flex items-center gap-2">
+            <div className={`w-2 h-2 rounded-full ${
+              backendStatus === 'connected' ? 'bg-green-500' : 
+              backendStatus === 'error' ? 'bg-red-500' : 'bg-yellow-500'
+            } animate-pulse`} />
+            <span className="text-sm text-muted-foreground">
+              {backendStatus === 'connected' ? 'Backend Connected' : 
+               backendStatus === 'error' ? 'Backend Offline' : 'Checking...'}
+            </span>
+          </div>
         </motion.div>
 
         <div className="max-w-4xl mx-auto">
@@ -230,7 +305,7 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
                           accept={ACCEPTED_TYPES.join(',')}
                           onChange={handleFileInput}
                         />
-                        <Button variant="premium" asChild>
+                        <Button variant="premium" asChild disabled={backendStatus !== 'connected'}>
                           <label htmlFor="file-upload" className="cursor-pointer">
                             Browse Files
                           </label>
@@ -255,6 +330,13 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
                             <CheckCircle className="w-6 h-6 text-green-500" />
                           </div>
 
+                          {uploadError && (
+                            <div className="p-4 mb-4 bg-destructive/10 text-destructive rounded-md flex items-center gap-2">
+                              <AlertCircle className="w-5 h-5 flex-shrink-0" />
+                              <p>{uploadError}</p>
+                            </div>
+                          )}
+
                           {isUploading && (
                             <div className="mb-4">
                               <div className="flex justify-between items-center mb-2">
@@ -267,23 +349,27 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
 
                           <Button
                             variant="hero"
-                            onClick={simulateUpload}
-                            disabled={isUploading}
+                            onClick={uploadFile}
+                            disabled={isUploading || backendStatus !== 'connected'}
                             className="w-full"
                           >
-                            {isUploading ? 'Processing...' : 'Start Analysis'}
+                            {isUploading ? 'Uploading...' : 'Upload & Start Analysis'}
                           </Button>
                         </motion.div>
                       )}
 
-                      {/* File Requirements */}
-                      <div className="mt-8 text-center">
-                        <p className="text-sm text-muted-foreground mb-2">
-                          Supported formats: {ACCEPTED_TYPES.join(', ')}
+                      {/* File Requirements - Centered */}
+                      <div className="mt-8 p-6 bg-card/30 rounded-lg text-center">
+                        <h4 className="font-medium mb-3 text-foreground text-lg">Supported File Types:</h4>
+                        <p className="text-base text-muted-foreground mb-6 font-medium">
+                          CSV, DOC, DOCX, PDF, TXT (Max 50MB)
                         </p>
-                        <p className="text-sm text-muted-foreground">
-                          Maximum file size: 50MB
-                        </p>
+                        <h4 className="font-medium mb-3 text-foreground text-lg">Tips for Best Results:</h4>
+                        <div className="text-sm text-muted-foreground space-y-2 max-w-md mx-auto">
+                          <p>• Ensure your text data is clean and well-formatted</p>
+                          <p>• For CSV files, include headers for better analysis</p>
+                          <p>• Larger datasets provide more accurate insights</p>
+                        </div>
                       </div>
                     </motion.div>
                   ) : (
@@ -293,15 +379,15 @@ const UploadPage: React.FC<UploadPageProps> = ({ onBack, onUploadComplete }) => 
                       animate={{ opacity: 1, scale: 1 }}
                       className="text-center py-12"
                     >
-                      <CheckCircle className="w-24 h-24 text-green-500 mx-auto mb-6 animate-scale-in" />
-                      <h3 className="text-2xl font-bold text-foreground mb-4">
-                        Upload Successful!
+                      <CheckCircle className="w-24 h-24 text-green-500 mx-auto mb-6" />
+                      <h3 className="text-2xl font-bold text-foreground mb-2">
+                        Upload Complete!
                       </h3>
                       <p className="text-muted-foreground mb-6">
-                        Your file has been processed. Redirecting to analysis...
+                        Your file has been successfully uploaded and is being processed.
                       </p>
-                      <div className="flex justify-center">
-                        <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+                      <div className="animate-pulse text-primary">
+                        Redirecting to analysis...
                       </div>
                     </motion.div>
                   )}
