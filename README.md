@@ -99,50 +99,47 @@ scikit-learn for machine learning models
 
 FPDF / python-docx for professional PDF generation
 
-Loguru for logging and debugging
 
 ---
 
 ## 📁 Project Structure
 smart-dataset-analyzer/
-├── src/                          # Frontend React application
-│   ├── components/               # React components
-│   │   ├── AnalysisPage.tsx      # Main analysis interface
-│   │   ├── HeroPage.tsx          # Landing page
-│   │   ├── UploadPage.tsx        # File upload page
-│   │   └── ui/                   # UI components (shadcn/ui)
-│   ├── contexts/                 # React context providers
+├── frontend/                     # 💻 Frontend React application
+│   ├── components/               # Reusable React components
+│   │   ├── AnalysisPage.tsx      # Main analysis dashboard
+│   │   ├── HeroPage.tsx          # Landing page with hero section
+│   │   ├── UploadPage.tsx        # Drag-and-drop file upload
+│   │   └── ui/                   # shadcn/ui component library (40+ components)
+│   ├── contexts/                 # React Context API
 │   │   └── AnalysisContext.tsx   # Global state management
 │   ├── hooks/                    # Custom React hooks
 │   ├── lib/                      # Utility functions
-│   ├── pages/                    # Pages
-│   └── README.md                 # Frontend documentation
-├── backend/                      # Python FastAPI backend
-│   ├── pipeline/                 # NLP processing modules
-│   │   ├── classification.py
-│   │   ├── preprocessing.py
-│   │   ├── reporting.py
-│   │   ├── sentiment.py
-│   │   ├── summarization.py
-│   │   └── topic_modeling.py
-│   ├── main.py                   # FastAPI server
-│   ├── utils.py                  # Backend utilities
-│   └── README.md                 # Backend documentation
-├── outputs/                      # Generated charts and PDFs
-├── results/                      # Analysis results cache
-├── uploads/                      # User uploaded files
-└── models/                       # Trained ML models
-
-
-📚 See backend/README.md
- for API reference and src/README.md
- for frontend setup instructions.
-
----
-
-## 🚀 Getting Started
-
-### Prerequisites
+│   ├── pages/                    # Page components
+│   ├── App.tsx                   # Root component
+│   ├── main.tsx                  # Application bootstrap
+│   ├── App.css                   # Global styles
+│   ├── index.css                 # Tailwind CSS imports
+│   └── README.md                 # 📘 Frontend-specific docs
+│
+├── backend/                      # 🖥️ Python FastAPI backend
+│   ├── pipeline/                 # NLP processing pipeline
+│   │   ├── preprocessing.py      # Text cleaning & feature engineering
+│   │   ├── topic_modeling.py     # LDA & NMF algorithms
+│   │   ├── sentiment.py          # VADER sentiment analysis
+│   │   ├── classification.py     # ML classification models
+│   │   ├── summarization.py      # Extractive summarization
+│   │   └── reporting.py          # PDF report generation
+│   ├── main.py                   # FastAPI server & API endpoints
+│   ├── utils.py                  # Backend helper functions
+│   ├── requirements.txt          # Python dependencies
+│   └── README.md                 # 📗 Backend API documentation
+│
+├── outputs/                      # 📊 Generated charts, PDFs, and reports
+├── results/                      # 💾 Cached analysis results (JSON)
+├── uploads/                      # 📁 User-uploaded files
+├── models/                       # 🤖 Trained ML models
+├── assets/                       # 🖼️ UI screenshots and images
+└── README.md                     # 📖 Main documentation (you are here)
 
 Node.js 18+ and npm
 

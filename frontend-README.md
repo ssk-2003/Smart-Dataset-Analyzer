@@ -15,19 +15,19 @@ The Smart NLP Analytics Dashboard frontend is built with React 18, TypeScript, a
 
 ### 🏠 Landing Page
 <div align="center">
-  <img src="../assets/landing-page.png" alt="Landing Page" width="80%">
+  <img src="./assets/landing-page.png" alt="Landing Page" width="80%">
   <p><i>Modern hero section with gradients and feature highlights</i></p>
 </div>
 
 ### 📤 Upload Page
 <div align="center">
-  <img src="../assets/upload-page.png" alt="Upload Page" width="80%">
+  <img src="./assets/upload-page.png" alt="Upload Page" width="80%">
   <p><i>Drag-and-drop file upload with validation and preview</i></p>
 </div>
 
 ### 📊 Analysis Dashboard
 <div align="center">
-  <img src="../assets/analysis-page.png" alt="Analysis Dashboard" width="80%">
+  <img src="./assets/analysis-page.png" alt="Analysis Dashboard" width="80%">
   <p><i>Real-time analysis with interactive charts and visualizations</i></p>
 </div>
 
@@ -60,7 +60,7 @@ Dark Theme – Beautiful gradients and color schemes
 ## 📂 Project Structure
 
 ```
-src/
+frontend/
 ├── components/                 # React UI components
 │   ├── AnalysisPage.tsx        # Main analysis dashboard
 │   ├── HeroPage.tsx            # Landing page
@@ -81,7 +81,10 @@ src/
 ├── pages/                      # Page components
 │   └── Index.tsx
 ├── App.tsx                     # Root component
-└── main.tsx                    # App bootstrap
+├── main.tsx                    # App bootstrap
+├── App.css                     # Global styles
+├── index.css                   # Tailwind CSS imports
+└── README.md                   # Frontend documentation
 ```
 
 ---
@@ -175,7 +178,6 @@ Output → dist/ folder ready for deployment
     "lucide-react": "^0.462.0",
     "framer-motion": "^12.23.16",
     "@radix-ui/react-*": "^1.x.x",
-    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "tailwind-merge": "^2.6.0",
     "zod": "^3.25.76"
@@ -248,6 +250,7 @@ Gradients, hover effects, shadow styling included
 
 Connects to backend at http://localhost:8001:
 
+```typescript
 const uploadFile = async (file: File) => {
   const formData = new FormData();
   formData.append('file', file);
@@ -315,6 +318,7 @@ npm run lint     # Run ESLint
 
 Holds global state: analysis results, file upload status, current step, error handling, PDF generation
 
+```typescript
 import { useAnalysis } from '@/contexts/AnalysisContext';
 
 const { analysisResults, uploadFile, analyzeFile, downloadReport } = useAnalysis();
@@ -330,7 +334,7 @@ Tablet optimized grids
 
 Full dashboard experience on desktop
 
-Tailwind Breakpoints
+### Tailwind Breakpoints
 
 sm: 640px
 md: 768px
@@ -356,14 +360,16 @@ Graceful error handling & loading states
 
 ## 🌐 Deployment
 
-Build for production:
+### Build for production:
 
+```bash
 npm run build
+```
 
 
 Deploy static files (dist/) to Vercel, Netlify, or GitHub Pages
 
-.env setup:
+### .env setup:
 
 ```bash
 VITE_API_URL=http://localhost:8001
