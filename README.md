@@ -1,4 +1,4 @@
-##🌌 Smart DataSet Analyzer – Advanced NLP Text Analysis Platform
+# 🌌 Smart DataSet Analyzer – Advanced NLP Text Analysis Platform
 
 Smart DataSet Analyzer is a comprehensive web application for advanced Natural Language Processing (NLP) analysis, including sentiment analysis, topic modeling, text summarization, and professional PDF report generation. It offers both a modern frontend dashboard and a high-performance backend API for end-to-end text analytics.
 
@@ -11,15 +11,6 @@ Smart DataSet Analyzer is a comprehensive web application for advanced Natural L
 ---
 
 ## 🖼️ UI Preview
-
-<div align="center">
-  <img src="./assets/ui-preview.png" alt="Smart DataSet Analyzer - UI Preview" width="100%">
-  <p><i>Landing Page • Upload Interface • Analysis Dashboard with Interactive Visualizations</i></p>
-</div>
-
----
-
-## 📸 Application Screenshots
 
 ### 🏠 Landing Page
 <div align="center">

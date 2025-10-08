@@ -13,6 +13,12 @@ dist
 dist-ssr
 *.local
 
+# Root level frontend artifacts (should be in frontend/ folder)
+/public
+/dist
+/node_modules
+/vite.config.ts
+
 # Python
 __pycache__/
 *.py[cod]
